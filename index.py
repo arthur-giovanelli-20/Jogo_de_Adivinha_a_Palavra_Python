@@ -14,8 +14,9 @@ tentativas_chute = 0
 palavra_formatada = len(palavra_secreta) * '*'
 lista_formatada = list(map(str, palavra_formatada))
 
-if tentativa < 7:
-    for caracteres in palavra_secreta:
+
+for caracteres in palavra_secreta:
+    if tentativa < 11:
         letra = input('digite uma letra: ').lower()
         if len(letra) > 1:
             print('digite apenas uma letra')
@@ -82,55 +83,36 @@ if tentativa < 7:
                             else:
                                 print('Sabedoria ou tolice?')
                                 break   
-else:
-    if tentativa == 15 and tentativas_chute < 3:
-        while tentativas_chute < 4:
-                        if tentativas_chute == 0:
-                            tentar_chutar = input('Tentar chutar? (s/n) (voce so tem 3 tentativas) ')
-                            if tentar_chutar == 's':
+if tentativa > 10 and tentativas_chute < 3:
+                        while tentativas_chute < 4:
+                            if tentativas_chute == 0:
                                 tentativas_chute += 1
                                 chute = input(f'Seu {tentativas_chute}º chute: ')
                                 if chute == palavra_secreta:
-                                    print('Venceu!!!!!')
-                                    print(f'Você colocou {tentativa} letras e fez {tentativas_chute} chute(s)')
-                                    sys.exit() 
+                                        print('Venceu!!!!!')
+                                        print(f'Você colocou {tentativa} letras e fez {tentativas_chute} chute(s)')
+                                        sys.exit() 
                                 else:
-                                    print(f'Agora voce so tem {abs(3 - tentativas_chute)} chances')
-                            else:
-                                print('Cagão')
-                                break                       
-                        elif tentativas_chute == 1:
-                            tentar_chutar = input(f'chutar novamente? (s/n) (voce so tem mais {abs(3 - tentativas_chute)} tentativas) ')  
-                            if tentar_chutar == 's':
-                                tentativas_chute += 1
-                                chute = input(f'Seu {tentativas_chute}º chute: ')
-                                if chute == palavra_secreta:
-                                    print('Venceu!!!!!')
-                                    print(f'Você colocou {tentativa} letras e fez {(tentativas_chute + 1)} de chute(s)')
-                                    sys.exit()    
-                                else:
-                                    print(f'Agora você só tem {abs(3 - tentativas_chute)} chances')
-                            else:
-                                print('Cagão')
-                                break                  
-                        elif tentativas_chute == 2:
-                            tentar_chutar = input(f'Chutar novamente? (s/n) (é a sua ultima chance) ')  
-                            if tentar_chutar == 's':
-                                chute = input(f'Seu ultimo chute: ')
-                                if chute == palavra_secreta:
-                                    print('Venceu!!!!!')
-                                    print(f'Você colocou {tentativa} letras e fez {(tentativas_chute + 1)} chute(s)')
-                                    sys.exit() 
-                                else:
-                                    print('Fim de jogo...')
-                                    print(f'Você colocou {tentativa} letras e fez {(tentativas_chute + 1)} chute(s)')
-                                    sys.exit()        
-                            else:
-                                print('Sabedoria ou tolice?')
-                                break     
-    else:
-        print('Fim de jogo...')
-        print(f'Você colocou {tentativa} letras e fez {(tentativas_chute + 1)} chute(s)')         
-        
+                                        print(f'Agora voce so tem {abs(3 - tentativas_chute)} chances')                       
+                            if tentativas_chute == 1:
+                                    tentativas_chute += 1
+                                    chute = input(f'Seu {tentativas_chute}º chute: ')
+                                    if chute == palavra_secreta:
+                                        print('Venceu!!!!!')
+                                        print(f'Você colocou {tentativa} letras e fez {(tentativas_chute + 1)} de chute(s)')
+                                        sys.exit()    
+                                    else:
+                                        print(f'Agora você só tem {abs(3 - tentativas_chute)} chances')              
+                            elif tentativas_chute == 2:  
+                                    chute = input(f'Seu ultimo chute: ')
+                                    if chute == palavra_secreta:
+                                        print('Venceu!!!!!')
+                                        print(f'Você colocou {tentativa} letras e fez {(tentativas_chute + 1)} chute(s)')
+                                        sys.exit() 
+                                    else:
+                                        print('Fim de jogo...')
+                                        print(f'Você colocou {tentativa} letras e fez {(tentativas_chute + 1)} chute(s)')
+                                        sys.exit()                    
+            
 
-    
+        
